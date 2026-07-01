@@ -54,10 +54,11 @@ connection URL lives in `prisma.config.ts` (not `schema.prisma`), the client is
 generated into `src/generated/prisma`, and you connect through a **driver
 adapter** (`@prisma/adapter-pg`).
 
-After running `yarn prisma:migrate`, create `src/db.ts`:
+This project is **ESM** (`"type": "module"`), so relative imports need a
+`.js` extension. After running `yarn prisma:migrate`, create `src/db.ts`:
 
 ```ts
-import { PrismaClient } from "./generated/prisma/client";
+import { PrismaClient } from "./generated/prisma/client.js";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
@@ -68,7 +69,7 @@ export const prisma = new PrismaClient({ adapter });
 Then use it in your routes:
 
 ```ts
-import { prisma } from "./db";
+import { prisma } from "./db.js";
 
 const games = await prisma.game.findMany();
 ```
