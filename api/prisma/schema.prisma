@@ -1,5 +1,7 @@
-// Prisma schema — your database models.
-// After editing, run:  yarn prisma:migrate   (creates/updates tables and regenerates the client)
+// Prisma schema — define your database models here.
+//
+// The models are yours to design (see the project spec for the game rules).
+// After adding or changing a model, run:  yarn prisma:migrate
 // Prisma 7 note: the connection URL lives in `prisma.config.ts`, not here.
 // Docs: https://www.prisma.io/docs
 
@@ -12,21 +14,4 @@ datasource db {
   provider = "postgresql"
 }
 
-// Starter models for Celebrity Name Chain. Extend these to enforce the
-// rules in the project spec (see the tiered goals for unique constraints, etc.).
-model Game {
-  id        Int      @id @default(autoincrement())
-  roomCode  String
-  createdAt DateTime @default(now())
-  answers   Answer[]
-}
-
-model Answer {
-  id        Int      @id @default(autoincrement())
-  firstName String
-  lastName  String
-  username  String
-  createdAt DateTime @default(now())
-  game      Game     @relation(fields: [gameId], references: [id])
-  gameId    Int
-}
+// TODO: add your models below (for example, a Game and its Answers).
