@@ -23,6 +23,17 @@ the repo, then **adds the others as collaborators**. One team = one repo.
 - **PostgreSQL** running locally
 - **ngrok** (only needed to play together across machines)
 
+### Node version (nvm)
+
+Make sure you're on Node 22 before installing anything:
+
+```bash
+node --version        # check your current version
+nvm install 22        # install Node 22 (if you don't have it)
+nvm use 22            # use it in this shell
+nvm alias default 22  # optional: make Node 22 your default
+```
+
 ## 1. API (backend)
 
 ```bash
