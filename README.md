@@ -39,10 +39,13 @@ nvm alias default 22  # optional: make Node 22 your default
 ```bash
 cd api
 yarn install
-cp .env.example .env      # then set DATABASE_URL
+cp .env.example .env      # then edit .env (see below)
 yarn prisma:migrate       # create tables + generate the Prisma client
 yarn dev                  # http://localhost:3000  (GET /health -> { "ok": true })
 ```
+
+**Edit `.env`** and set `DATABASE_URL` to your local PostgreSQL connection
+before running `yarn prisma:migrate`.
 
 More detail (scripts, Prisma 7 workflow) is in [`api/README.md`](api/README.md).
 
@@ -51,9 +54,12 @@ More detail (scripts, Prisma 7 workflow) is in [`api/README.md`](api/README.md).
 ```bash
 cd client
 yarn install
-cp .env.example .env      # VITE_API_URL defaults to http://localhost:3000
+cp .env.example .env      # then edit .env (see below)
 yarn dev                  # open the Ionic app in your browser (or: ionic serve)
 ```
+
+**Edit `.env`** and set `VITE_API_URL` to point at your API (defaults to
+`http://localhost:3000`; use your ngrok URL when playing together).
 
 ## 3. Play together
 
